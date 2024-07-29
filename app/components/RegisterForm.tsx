@@ -1,4 +1,6 @@
 'use client';
+
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
 const RegisterForm = () => {
@@ -6,12 +8,14 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [error, setError] = useState('');
+    const router = useRouter();
   
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+                
 
-        const res = await fetch('/api/auth/register', {
+        const res = await fetch('/api/register', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -20,7 +24,7 @@ const RegisterForm = () => {
         });
     
         if (res.ok) {
-            // Handle successful registration (e.g., redirect to login page)
+            router.push('/api/auth/signin')
         } else {
             const data = await res.json();
             setError(data.error || 'Registration failed');
@@ -31,6 +35,7 @@ const RegisterForm = () => {
         setName('');
         setEmail('');
         setPassword('');
+        // TODO
         // Add your cancel logic here, e.g., clearing the form or navigating to another page
     };
   
