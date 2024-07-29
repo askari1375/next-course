@@ -8,5 +8,5 @@ export const config = {
     // *: zero or more
     // +: one or more
     // ?: zero or one
-    matcher: ['/users/:path*']
+    matcher: ['/users/:path*', '/settings/:path*']
 }

@@ -4,25 +4,25 @@ import prisma from "@/prisma/client";
 
 
 
-export async function GET(
-    request: NextRequest,
-    { params }: { params: { id: string} }) {
+// export async function GET(
+//     request: NextRequest,
+//     { params }: { params: { id: string} }) {
     
-    const id = parseInt(params.id, 10)
-    if (isNaN(id)) {
-        return NextResponse.json({ error : "Invalid ID" }, { status: 400 })
-    }
+//     const id = parseInt(params.id, 10)
+//     if (isNaN(id)) {
+//         return NextResponse.json({ error : "Invalid ID" }, { status: 400 })
+//     }
 
 
-    const user = await prisma.user.findUnique({
-        where: { id: id }
-    });
+//     const user = await prisma.user.findUnique({
+//         where: { id: id }
+//     });
     
-    if (!user)
-        return NextResponse.json({ error: 'User not found'}, { status: 404 });
+//     if (!user)
+//         return NextResponse.json({ error: 'User not found'}, { status: 404 });
 
-    return NextResponse.json(user);
-}
+//     return NextResponse.json(user);
+// }
 
 export async function PUT(
     request: NextRequest,
@@ -40,7 +40,7 @@ export async function PUT(
     // Fetch the user with the given id
     // If doesn't exist, return 404
     const user = await prisma.user.findUnique({
-        where: {id: parseInt(params.id)}
+        where: {id: params.id}
     });
 
     if (!user)
@@ -66,7 +66,7 @@ export async function DELETE(
 ) {
     // Fetch user from db
     const user = await prisma.user.findUnique({
-        where: {id: parseInt(params.id)}
+        where: {id: params.id}
     });
     // If not found, return 404
     if (!user)
