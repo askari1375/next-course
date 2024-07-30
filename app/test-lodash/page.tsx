@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 
-const page = () => {
+const Page = () => {
 
     const [isVisible, setVisible] = useState(false)
 
@@ -26,4 +26,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

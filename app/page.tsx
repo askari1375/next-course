@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from './api/auth/authOptions'
 import my_image from '@/public/images/midjourney 1.png'
 import { Metadata } from 'next'
 import HeavyComponent from './components/HeavyComponent'
